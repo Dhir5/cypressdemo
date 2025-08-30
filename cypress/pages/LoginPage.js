@@ -21,7 +21,7 @@ class LoginPage {
   }
   // Get the logout button from the user dropdown
   getLogoutButton() {
-    return cy.contains('Logout');
+    return cy.contains('Logout');    
   }
 }
 

@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS_18"  // Jenkins NodeJS tool name
+        nodejs "NodeJS"   // make sure you configured NodeJS in Jenkins Global Tool Configuration
     }
-
     stages {
         stage('Checkout') {
             steps {
