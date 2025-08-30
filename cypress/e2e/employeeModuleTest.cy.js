@@ -8,10 +8,12 @@ describe('Employee Module Test', () => {
   });
 
   it('should add a new employee', () => {
+    const empDetails=Cypress.env('newEmployee'); // ✅ Load new employee details from env
     empPage.navigateToPIM();
     empPage.clickAddEmployee();
-    empPage.fillEmployeeDetails('John', 'Doe');
-    empPage.clickSave();
-    empPage.verifyEmployeeAdded();
+    empPage.fillEmployeeDetails(empDetails.firstName,empDetails.lastName);
+    empPage.clickSaveButton();
+
+    empPage.verifyEmployeeAdded(empDetails.firstName, empDetails.lastName); // ✅ Verify employee added
   });
 });
