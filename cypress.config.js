@@ -4,22 +4,28 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
-      // implement node event listeners here
+      return config;
     },
     specPattern: 'cypress/e2e/**/*.cy.{js,ts}',
     screenshotOnRunFailure: true,
-    // Specify the base URL for the tests
     baseUrl: 'https://opensource-demo.orangehrmlive.com'
   },
-  reporter:'cypress-mochawesome-reporter',
+  reporter: 'cypress-multi-reporters',
   reporterOptions: {
-    reportDir: 'cypress/reports',
-    charts: true,
-    overwrite: true,
-    html: true,
-    json: true,
-    enbeddedScreenshots: true, //show screenshots in the report
-    inlineAssets: true,
-    timestamp: 'mmddyyyy_HHMMss'
+    reporterEnabled: 'cypress-mochawesome-reporter, mocha-junit-reporter',
+    cypressMochawesomeReporterReporterOptions: {
+      reportDir: 'cypress/reports/html',
+      charts: true,
+      overwrite: true,
+      html: true,
+      json: true,
+      embeddedScreenshots: true,
+      inlineAssets: true,
+      timestamp: 'mmddyyyy_HHMMss'
+    },
+    mochaJunitReporterReporterOptions: {
+      mochaFile: 'cypress/reports/junit/results-[hash].xml',
+      toConsole: false
+    }
   }
 });
