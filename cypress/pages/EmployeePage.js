@@ -15,8 +15,8 @@ class EmployeePage{
     }
     
     verifyEmployeeAdded(firstName, lastName) {
-        cy.get('input[name=firstName]', {timeout:10000}).should('have.value', firstName);
-        cy.get('input[name=lastName]',{timeout:10000}).should('have.value', lastName);
+        cy.get('input[name=firstName]').should('have.value', firstName);
+        cy.get('input[name=lastName]').should('have.value', lastName);
     }
 }
 export default EmployeePage;

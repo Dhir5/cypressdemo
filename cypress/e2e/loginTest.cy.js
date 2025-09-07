@@ -5,7 +5,7 @@ describe('Login Test - OrangeHRM', () => {
 
   it('should login and logout with valid credentials', () => {
     cy.login(); // ✅ Uses env.validUser automatically
-    cy.get('h6.oxd-text.oxd-text--h6', { timeout: 10000 })
+    cy.get('h6.oxd-text.oxd-text--h6')
       .should('contain', 'Dashboard');
     cy.logout();
     loginPage.getUsernameInput().should('be.visible');
